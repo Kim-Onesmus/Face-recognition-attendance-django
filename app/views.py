@@ -430,13 +430,17 @@ def ExamCard(request):
         )
     )
 
-    # Check if the attendance percentage for all units is greater than 80%
-    all_units_above_80 = all(unit['attendance_percentage'] > 80 for unit in registerAttendance)
+    # Check if the attendance percentage for all units combined is greater than 80%
+    total_units = len(units_list)  # Total number of units
+    units_above_80_count = sum(1 for unit in registerAttendance if unit['attendance_percentage'] > 80)
+
+    all_units_above_80 = units_above_80_count == total_units
 
     print('percentage', registerAttendance)
 
     context = {'student': student, 'unit_list': units_list, 'percentage': all_units_above_80}
     return render(request, 'app/examcard.html', context)
+
 
 
 def myProfile(request):
