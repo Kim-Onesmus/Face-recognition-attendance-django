@@ -748,8 +748,8 @@ $(document).ready(function () {
                             {"latitude": -0.82719733593, "longitude": 34.618297577905}
                         ]                      
                     },
-                    startTime: '9:00 AM',
-                    endTime: '10:30 AM'
+                    startTime: '7:00 AM',
+                    endTime: '9:00 AM'
                 },
                 {
                     code: 'COM 427',
