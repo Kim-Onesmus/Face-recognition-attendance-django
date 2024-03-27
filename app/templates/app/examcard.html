@@ -228,7 +228,17 @@
         html2canvas(section, { scale: 2 }).then(function (canvas) {
             var imgData = canvas.toDataURL('image/png');
             var pdf = new jsPDF('p', 'mm', 'a4');
-            pdf.addImage(imgData, 'PNG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
+
+            // Add padding to the whole page
+            var paddingLeft = 10;
+            var paddingTop = 10;
+            var paddingRight = 10;
+            var paddingBottom = 10;
+            pdf.addImage(imgData, 'PNG', paddingLeft, paddingTop, pdf.internal.pageSize.getWidth() - paddingLeft - paddingRight, pdf.internal.pageSize.getHeight() - paddingTop - paddingBottom);
+
+            // Increase font size
+            pdf.setFontSize(20); // Adjust the font size as needed
+
             pdf.save('exam_card.pdf');
 
             // Restore the original width and height
@@ -237,6 +247,7 @@
         });
     });
 </script>
+
 
 </script>
 <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
