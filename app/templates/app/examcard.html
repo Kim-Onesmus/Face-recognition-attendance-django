@@ -115,11 +115,11 @@
                                                 <div class="table-responsive">
                                                     <table class="table custom-table mb-0 datatable">
                                                         <thead>
-                                                            <tr>
+                                                            <!-- <tr>
                                                                 <th style="text-decoration: none;">Units for
                                                                     {{student.user.username}} {{student.first_name}} {{student.last_name}}
                                                                 </th>
-                                                            </tr>
+                                                            </tr> -->
                                                             <tr>
                                                                 <th>#</th>
                                                                 <th>COURSE CODE</th>
@@ -237,7 +237,7 @@
             pdf.addImage(imgData, 'PNG', paddingLeft, paddingTop, pdf.internal.pageSize.getWidth() - paddingLeft - paddingRight, pdf.internal.pageSize.getHeight() - paddingTop - paddingBottom);
 
             // Increase font size
-            pdf.setFontSize(20); // Adjust the font size as needed
+            pdf.setFontSize(30); // Adjust the font size as needed
 
             pdf.save('exam_card.pdf');
 
