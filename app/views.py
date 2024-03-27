@@ -373,6 +373,7 @@ def ClassAttendance(request):
             attendance_by_week[week].append(attendance_entry)
 
         unit_attendance_data.append({'unit': unit, 'attendance_by_week': attendance_by_week})
+        
 
     context = {'unit_attendance_data': unit_attendance_data, 'student': student, 'students': students}
     return render(request, 'app/fullAttendance.html', context)
