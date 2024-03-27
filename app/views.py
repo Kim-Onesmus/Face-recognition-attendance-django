@@ -32,10 +32,10 @@ def Login(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            messages.info(request, 'Please enroll to continue')
+            # messages.info(request, 'Please enroll to continue')
             return redirect('enroll')
         else:
-            messages.error(request, 'Invalid details')
+            # messages.error(request, 'Invalid details')
             return redirect('/')
     return render(request, 'app/login.html')
 
