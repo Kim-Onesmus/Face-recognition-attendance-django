@@ -8,7 +8,7 @@ import os
 from django.conf import settings
 
 def Recognizer(details, classNames):
-    time_spend = time.time() + 10
+    time_spend = time.time() + 15
     path = os.path.join(settings.BASE_DIR, 'media', 'media')
     print(path)
     
