@@ -1,6 +1,6 @@
-{% extends 'main.html' %}
-{% load static %}
+{% extends 'base.html' %}
 {% block content %}
+{% load static %}
 <div class="page-wrapper">
     <div class="content">
         <div class="card-box profile-header">
@@ -16,7 +16,7 @@
             <ul class="nav nav-tabs nav-tabs-bottom" id="unitTabs">
                 {% for unit_data in unit_attendance_data %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="tab" data-unit-code="{{ unit_data.unit.code }}">
+                    <a class="nav-link" href="#unit-{{ unit_data.unit.code }}" data-toggle="tab" data-unit-code="{{ unit_data.unit.code }}">
                         {{ unit_data.unit.code }}
                     </a>
                 </li>
@@ -72,31 +72,19 @@
         </div>
     </div>
 </div>
+{% endblock content %}
 <!-- <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script> -->
 <script src="{% static 'js/popper.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/jquery.slimscroll.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var unitTabs = document.getElementById("unitTabs");
-        unitTabs.addEventListener("click", function (event) {
-            event.preventDefault();
-            var targetTab = event.target;
-            var unitCode = targetTab.getAttribute("data-unit-code");
-            showTabContent(unitCode);
-        });
-
-        function showTabContent(unitCode) {
-            var tabs = document.querySelectorAll(".tab-pane");
-            tabs.forEach(function (tab) {
-                tab.classList.remove("show", "active");
-                if (tab.id === "unit-" + unitCode) {
-                    tab.classList.add("show", "active");
-                }
-            });
-        }
-    });
+document.addEventListener("DOMContentLoaded", function () {
+    $('#unitTabs a').on('click', function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
+})
 </script>
 {% endblock content %}
