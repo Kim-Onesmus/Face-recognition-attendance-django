@@ -79,11 +79,11 @@
 <script src="{% static 'js/app.js' %}"></script>
 <script>
     $(document).ready(function () {
-        $('#unitTabs a').on('click', function (e) {
+        // Event delegation for dynamically added elements
+        $(document).on('click', '#unitTabs a', function (e) {
             e.preventDefault();
             $(this).tab('show');
         });
     });
 </script>
-
 {% endblock content %}
