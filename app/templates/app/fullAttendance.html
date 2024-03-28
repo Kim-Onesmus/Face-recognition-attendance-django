@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 {% endfor %}
-            </ul>
+            </ul> 
             <div class="tab-content">
                 {% for unit_data in unit_attendance_data %}
                 <div class="tab-pane" id="unit-{{ unit_data.unit.code }}">
@@ -91,9 +91,10 @@
         function showTabContent(unitCode) {
             var tabs = document.querySelectorAll(".tab-pane");
             tabs.forEach(function (tab) {
-                tab.classList.remove("show", "active");
                 if (tab.id === "unit-" + unitCode) {
                     tab.classList.add("show", "active");
+                } else {
+                    tab.classList.remove("show", "active");
                 }
             });
         }
