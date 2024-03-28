@@ -16,7 +16,7 @@
             <ul class="nav nav-tabs nav-tabs-bottom" id="unitTabs">
                 {% for unit_data in unit_attendance_data %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#unit-{{ unit_data.unit.code|slugify }}" data-toggle="tab" data-unit-code="{{ unit_data.unit.code }}">
+                    <a class="nav-link" href="#" data-toggle="tab" data-unit-code="{{ unit_data.unit.code }}">
                         {{ unit_data.unit.code }}
                     </a>
                 </li>
@@ -24,7 +24,7 @@
             </ul>
             <div class="tab-content">
                 {% for unit_data in unit_attendance_data %}
-                <div class="tab-pane" id="unit-{{ unit_data.unit.code|slugify }}">
+                <div class="tab-pane" id="unit-{{ unit_data.unit.code }}">
                     <section class="page">
                         {% for week, attendance_list in unit_data.attendance_by_week.items %}
                         <div class="row">
@@ -77,13 +77,26 @@
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/jquery.slimscroll.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function () {
-        // Event delegation for dynamically added elements
-        $(document).on('click', '#unitTabs a', function (e) {
-            e.preventDefault();
-            $(this).tab('show');
+    document.addEventListener("DOMContentLoaded", function () {
+        var unitTabs = document.getElementById("unitTabs");
+        unitTabs.addEventListener("click", function (event) {
+            event.preventDefault();
+            var targetTab = event.target;
+            var unitCode = targetTab.getAttribute("data-unit-code");
+            showTabContent(unitCode);
         });
+
+        function showTabContent(unitCode) {
+            var tabs = document.querySelectorAll(".tab-pane");
+            tabs.forEach(function (tab) {
+                tab.classList.remove("show", "active");
+                if (tab.id === "unit-" + unitCode) {
+                    tab.classList.add("show", "active");
+                }
+            });
+        }
     });
 </script>
 {% endblock content %}
