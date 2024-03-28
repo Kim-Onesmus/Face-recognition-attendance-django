@@ -658,7 +658,7 @@ $(document).ready(function () {
                 {
                     code: 'TEST 100',
                     name: 'Test Unit',
-                    day: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], 
+                    day: 'Thursday', 
                     lecturer: 'Test Lecturer',
                     room: {
                         name: 'Rongo University',
